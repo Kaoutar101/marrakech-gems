@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, MapPin, Bed, Bath, Square } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -60,6 +60,15 @@ const PropertyCarousel = () => {
   const nextProperty = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % properties.length);
   };
+
+  // Auto-advance carousel every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % properties.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const prevProperty = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + properties.length) % properties.length);

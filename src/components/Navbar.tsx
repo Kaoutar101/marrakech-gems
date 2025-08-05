@@ -38,8 +38,8 @@ const Navbar = () => {
             ))}
           </div>
           
-          <Button variant="hero" size="sm">
-            Contact Us
+          <Button variant="hero" size="sm" asChild>
+            <Link to="/contact">Contact Us</Link>
           </Button>
         </div>
       </div>
